@@ -24,11 +24,6 @@
       font-family: 'Sarabun', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
     }
 
-    html {
-      min-height: 100%;
-      -webkit-text-size-adjust: 100%;
-    }
-
     body { 
       min-height: 100vh;
       min-height: 100dvh;
@@ -37,14 +32,12 @@
         radial-gradient(circle at top left, rgba(25,118,210,0.22), transparent 34%),
         radial-gradient(circle at bottom right, rgba(7,31,84,0.18), transparent 38%),
         linear-gradient(135deg, #f4f8ff 0%, #eaf3ff 45%, #dbeaff 100%);
-      font-family: 'Sarabun', sans-serif;
       color: #1f2937;
     }
 
     .page-shell {
       width: 100%;
       min-height: 100vh;
-      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -53,8 +46,6 @@
 
     .form-container { 
       width: min(100%, 760px);
-      min-height: auto;
-      margin: 0 auto;
       background: var(--card-bg);
       padding: clamp(24px, 4vw, 46px);
       border-radius: 28px;
@@ -72,55 +63,18 @@
       background: linear-gradient(90deg, #071f54, #0d47a1, #42a5f5);
     }
 
-    .form-container::after {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      right: -90px;
-      top: -90px;
-      background: radial-gradient(circle, rgba(25,118,210,0.16), transparent 68%);
-      pointer-events: none;
-    }
-
     .header { 
       text-align: center; 
       margin-bottom: clamp(22px, 3vw, 34px);
       background: linear-gradient(180deg, rgba(25,118,210,0.10), rgba(255,255,255,0));
-      padding: clamp(16px, 3vw, 26px) clamp(10px, 2vw, 20px) 18px;
+      padding: clamp(16px, 3vw, 26px) 10px 18px;
       border-radius: 22px;
-      position: relative;
-      z-index: 1;
     }
 
     .header img { 
-      max-width: clamp(210px, 48vw, 350px); /* 🔥 ปรับขนาดโลโก้ตรงนี้ */
-      width: 120%;
+      max-width: clamp(210px, 48vw, 350px);
       height: auto; 
       margin-bottom: 10px;
-      opacity: 0.98;
-      filter: brightness(0.99) contrast(1.04);
-    }
-
-    .header h3 { 
-      color: var(--primary-color); 
-      font-weight: 800; 
-      margin: 0 auto 4px;
-      font-size: clamp(0.9rem, 2.35vw, 1.32rem);
-      line-height: 1.45;
-      padding: 4px 2px 6px;
-      letter-spacing: -0.015em;
-      white-space: nowrap;
-      overflow: visible;
-      text-overflow: clip;
-      max-width: 100%;
-    }
-
-    .header p {
-      color: #52637a;
-      font-size: clamp(0.92rem, 2.8vw, 1.02rem);
-      margin-bottom: 0;
-      line-height: 1.55;
     }
 
     #successOverlay {
@@ -134,169 +88,39 @@
       justify-content: center; 
       align-items: center; 
       text-align: center; 
-      padding: clamp(22px, 5vw, 36px);
+      padding: 36px;
     }
 
-    .success-icon {
-      font-size: clamp(64px, 16vw, 90px);
-      color: #28a745;
-      margin-bottom: 15px;
-    }
-
-    .form-label {
-      font-weight: 700;
-      color: #233044;
-      margin-bottom: 8px;
-      font-size: 0.98rem;
-    }
+    .form-label { font-weight: 700; color: #233044; margin-bottom: 8px; }
 
     .form-control, .form-select {
       min-height: 50px;
       border-radius: 14px;
-      padding: 12px 14px;
       border: 1px solid #d7e2f2;
       background-color: #fbfdff;
-      transition: all 0.2s ease;
-      font-size: 1rem;
-    }
-
-    .form-control:focus, .form-select:focus {
-      border-color: var(--primary-accent);
-      background-color: #ffffff;
-      box-shadow: 0 0 0 0.25rem rgba(25,118,210,0.18);
     }
 
     .btn-submit { 
       background: linear-gradient(135deg, #1976d2, #071f54);
       border: none; 
-      padding: 15px 18px; 
-      min-height: 56px;
+      padding: 15px; 
       border-radius: 999px; 
       width: 100%; 
       color: white; 
       font-weight: 800; 
-      font-size: clamp(1.02rem, 3.2vw, 1.14rem);
-      transition: all 0.3s ease; 
-      margin-top: 10px;
       box-shadow: 0 12px 28px rgba(13, 71, 161, 0.24);
     }
 
-    .btn-submit:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 16px 34px rgba(13,71,161,0.36); 
-      color: #fff;
-    }
+    .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 
-    .btn-submit:active {
-      transform: translateY(0);
-    }
-
-    .confirm-label { 
-      font-weight: 800; 
-      color: #52637a; 
-      width: 130px; 
-      display: inline-block; 
-    }
-
-    .modal-content {
-      border-radius: 22px !important;
-      overflow: hidden;
-    }
-
-    .modal-header {
-      background: linear-gradient(135deg, #1976d2, #071f54);
-      color: white;
-      border-bottom: none;
-      padding: 18px 22px;
-    }
-
-    .modal-footer {
-      border-top: 1px solid #e5edf8;
-      border-radius: 0 0 22px 22px;
-    }
+    .confirm-label { font-weight: 800; color: #52637a; width: 130px; display: inline-block; }
 
     .training-choice {
       background: linear-gradient(135deg, #e3f2fd, #f3f8ff);
       color: var(--primary-color);
       border: 1px solid rgba(25,118,210,0.18);
       border-radius: 14px;
-    }
-
-    .registration-id {
-      color: var(--primary-light);
-    }
-
-    @media (min-width: 992px) {
-      .form-container {
-        width: min(100%, 820px);
-      }
-
-      .form-grid-wide {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 16px;
-      }
-
-      .full-row {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .page-shell {
-        align-items: stretch;
-        padding: 0;
-      }
-
-      .form-container {
-        width: 100%;
-        min-height: 100vh;
-        min-height: 100dvh;
-        border-radius: 0;
-        padding: 22px 16px 28px;
-        box-shadow: none;
-        border-left: none;
-        border-right: none;
-        border-bottom: none;
-      }
-
-      .form-container::before {
-        height: 7px;
-      }
-
-      .header {
-        border-radius: 18px;
-        margin-bottom: 22px;
-      }
-
-      .header img {
-        max-width: 235px; /* 🔥 มือถือปรับขนาดโลโก้ตรงนี้ */
-      }
-
-      .header h3 {
-        font-size: clamp(0.72rem, 3.15vw, 0.94rem);
-        line-height: 1.45;
-        padding: 5px 0 7px;
-      }
-
-      .form-control, .form-select {
-        min-height: 52px;
-        font-size: 16px; /* ป้องกัน iPhone zoom ตอนแตะ input */
-      }
-
-      .confirm-label {
-        width: 100%;
-        display: block;
-        margin-bottom: 2px;
-      }
-
-      .modal-dialog {
-        margin: 12px;
-      }
-
-      #successOverlay {
-        border-radius: 0;
-      }
+      padding: 12px;
     }
   </style>
 </head>
@@ -306,69 +130,65 @@
     <div class="form-container">
 
       <div id="successOverlay">
-        <div class="success-icon">✅</div>
+        <div class="success-icon" style="font-size: 80px;">✅</div>
         <h2 class="text-success fw-bold">ลงทะเบียนสำเร็จ!</h2>
-        <p class="text-muted">ตรวจสอบอีเมลของท่านเพื่อรับ QR Code<br>(หากไม่พบใน Inbox โปรดเช็คใน Junk Mail)</p>
+        <p class="text-muted">ตรวจสอบอีเมลของท่านเพื่อรับ QR Code<br>(หากไม่พบโปรดเช็คใน Junk Mail)</p>
         <div class="p-4 bg-light rounded-4 w-100 mb-4 border">
           <small class="text-muted d-block mb-1">รหัสลงทะเบียน (Registration ID):</small>
-          <span id="displayResId" class="registration-id fw-bold fs-2"></span>
+          <span id="displayResId" class="text-primary fw-bold fs-2"></span>
         </div>
         <button class="btn btn-outline-secondary rounded-pill px-5" onclick="location.reload()">ลงทะเบียนคนถัดไป</button>
       </div>
 
       <div class="header">
-        <img src="https://cppqbctiybszcneqawjw.supabase.co/storage/v1/object/public/PIC/Logo-gold.png" alt="First Aid Training Logo">
-        <h2>หลักสูตรการกู้ชีพขั้นพื้นฐาน (CPR)</br> และการใช้เครื่อง AED</h2>
+        <img src="https://cppqbctiybszcneqawjw.supabase.co/storage/v1/object/public/PIC/Logo-gold.png" alt="Logo">
+        <h3 class="mt-2 fw-bold text-primary">หลักสูตรการกู้ชีพขั้นพื้นฐาน (CPR) และ AED</h3>
       </div>
 
       <form id="regForm" onkeydown="return event.key != 'Enter';">
-        <div class="form-grid-wide">
-          <div class="row full-row">
-            <div class="col-md-4 mb-3">
-              <label class="form-label">คำนำหน้า</label>
-              <select class="form-select" name="prefix" id="inp_prefix" required>
-                <option value="">เลือก...</option>
-                <option value="นาย">นาย</option>
-                <option value="นาง">นาง</option>
-                <option value="นางสาว">นางสาว</option>
-              </select>
-            </div>
-            <div class="col-md-8 mb-3">
-              <label class="form-label">ชื่อ-นามสกุล</label>
-              <input type="text" class="form-control" name="fullName" id="inp_name" required placeholder="กรอกชื่อและนามสกุล">
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">เบอร์โทรศัพท์</label>
-            <input type="tel" class="form-control" name="phone" id="inp_phone" required placeholder="08XXXXXXXX" pattern="[0-9]{9,10}">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">อีเมล</label>
-            <input type="email" class="form-control" name="email" id="inp_email" required placeholder="example@gmail.com">
-          </div>
-
-          <div class="mb-4 full-row">
-            <label class="form-label">รอบวันที่ต้องการเข้าอบรม</label>
-            <select class="form-select" name="date" id="date" required>
-              <option value="">เลือกวันที่และรอบเวลา</option>
-              <option value="15 กรกฎาคม 2569 (รอบเช้า)">15 กรกฎาคม 2569 (09:00 - 12:00)</option>
-              <option value="15 กรกฎาคม 2569 (รอบบ่าย)">15 กรกฎาคม 2569 (13:00 - 16:00)</option>
-              <option value="16 กรกฎาคม 2569 (รอบเช้า)">16 กรกฎาคม 2569 (09:00 - 12:00)</option>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label class="form-label">คำนำหน้า</label>
+            <select class="form-select" name="prefix" id="inp_prefix" required>
+              <option value="">เลือก...</option>
+              <option value="นาย">นาย</option>
+              <option value="นาง">นาง</option>
+              <option value="นางสาว">นางสาว</option>
             </select>
+          </div>
+          <div class="col-md-8 mb-3">
+            <label class="form-label">ชื่อ-นามสกุล</label>
+            <input type="text" class="form-control" name="fullName" id="inp_name" required placeholder="กรอกชื่อและนามสกุล">
           </div>
         </div>
 
-        <button type="button" class="btn btn-submit shadow-sm" onclick="showConfirm()">ลงทะเบียนเข้าร่วมอบรม</button>
+        <div class="mb-3">
+          <label class="form-label">เบอร์โทรศัพท์</label>
+          <input type="tel" class="form-control" name="phone" id="inp_phone" required placeholder="08XXXXXXXX" pattern="[0-9]{9,10}">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">อีเมล</label>
+          <input type="email" class="form-control" name="email" id="inp_email" required placeholder="example@gmail.com">
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">รอบวันที่ต้องการเข้าอบรม</label>
+          <select class="form-select" name="date" id="date" required>
+            <option value="">กำลังโหลดรอบการอบรม...</option>
+          </select>
+        </div>
+
+        <button type="button" id="mainSubmitBtn" class="btn btn-submit shadow-sm" onclick="showConfirm()">ลงทะเบียนเข้าร่วมอบรม</button>
       </form>
     </div>
   </main>
 
+  <!-- Modal ยืนยัน -->
   <div class="modal fade" id="confirmModal" tabindex="-1" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content border-0 shadow-lg">
-        <div class="modal-header">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
           <h5 class="modal-title fw-bold">ยืนยันข้อมูลการสมัคร</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
@@ -384,12 +204,40 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // URL ของ Google Apps Script (Deploy ล่าสุดของคุณ)
+    // URL ของ Google Apps Script
     const API_URL = "https://script.google.com/macros/s/AKfycbzmltnLo20zGaLgEaToN38NizWH_jqU97vT7x3nYDsqU2eZHvWBdqkxnyZ1skPyZ1XnmA/exec";
-
     const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
 
-    // ฟังก์ชันโชว์ Modal ตรวจสอบข้อมูลก่อนส่ง
+    // 1. โหลดข้อมูลรอบการอบรมทันทีที่เปิดหน้าเว็บ
+    window.addEventListener('DOMContentLoaded', loadSessions);
+
+    async function loadSessions() {
+      const dateSelect = document.getElementById('date');
+      try {
+        const response = await fetch(`${API_URL}?action=getSessions`);
+        const sessions = await response.json();
+
+        dateSelect.innerHTML = '<option value="">เลือกวันที่และรอบเวลา</option>';
+        
+        sessions.forEach(session => {
+          const option = document.createElement('option');
+          option.value = session.name;
+          
+          let statusText = `(ว่าง ${session.available}/${session.max})`;
+          if (session.isFull) {
+            option.disabled = true;
+            statusText = `(เต็มแล้ว)`;
+          }
+          
+          option.textContent = `${session.name} ${statusText}`;
+          dateSelect.appendChild(option);
+        });
+      } catch (error) {
+        dateSelect.innerHTML = '<option value="">เกิดข้อผิดพลาดในการโหลดข้อมูล</option>';
+        console.error("Load sessions error:", error);
+      }
+    }
+
     function showConfirm() {
       const form = document.getElementById('regForm');
       if(!form.checkValidity()) { form.reportValidity(); return; }
@@ -401,27 +249,24 @@
       const date = document.getElementById('date').value;
 
       document.getElementById('confirmData').innerHTML = `
-        <div class="p-1">
-          <p class="mb-2"><span class="confirm-label">ชื่อ-นามสกุล:</span> <b class="text-dark">${prefix}${name}</b></p>
+        <div>
+          <p class="mb-2"><span class="confirm-label">ชื่อ-นามสกุล:</span> <b>${prefix}${name}</b></p>
           <p class="mb-2"><span class="confirm-label">เบอร์โทรศัพท์:</span> <b>${phone}</b></p>
           <p class="mb-2"><span class="confirm-label">อีเมล:</span> <b>${email}</b></p>
           <hr>
-          <p class="mb-1 text-muted small">รอบการอบรมที่เลือก:</p>
-          <div class="p-2 training-choice text-center fw-bold">
-            ${date}
-          </div>
+          <p class="mb-1 text-muted small">รอบที่เลือก:</p>
+          <div class="training-choice text-center fw-bold">${date}</div>
         </div>`;
       confirmModal.show();
     }
 
-    // ฟังก์ชันส่งข้อมูลไปยัง Google Apps Script
     async function submitForm() {
       const btn = document.getElementById('confirmBtn');
       const form = document.getElementById('regForm');
       const formData = new FormData(form);
 
       btn.disabled = true; 
-      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> กำลังบันทึกข้อมูล...';
+      btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> กำลังบันทึก...';
 
       try {
         const response = await fetch(API_URL, {
@@ -437,10 +282,10 @@
           document.getElementById('successOverlay').style.display = 'flex';
           form.reset();
         } else {
-          throw new Error(res.message || 'บันทึกไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+          throw new Error(res.message);
         }
       } catch (err) {
-        alert("เกิดข้อผิดพลาด: " + err.message);
+        alert("ข้อผิดพลาด: " + err.message);
         btn.disabled = false;
         btn.innerHTML = 'ยืนยันข้อมูลถูกต้อง';
       }
