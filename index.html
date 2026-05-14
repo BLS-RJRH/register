@@ -168,8 +168,8 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label">อีเมล</label>
-          <input type="email" class="form-control" name="email" id="inp_email" required placeholder="example@gmail.com">
+          <label class="form-label">อีเมล <span class="text-danger small fw-normal">(ต้องเป็น @gmail.com เท่านั้น)</span></label>
+          <input type="email" class="form-control" name="email" id="inp_email" required placeholder="example@gmail.com" pattern=".*@gmail\.com$">
         </div>
 
         <div class="mb-4">
@@ -184,7 +184,6 @@
     </div>
   </main>
 
-  <!-- Modal ยืนยัน -->
   <div class="modal fade" id="confirmModal" tabindex="-1" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -214,14 +213,12 @@
     async function loadSessions() {
       const dateSelect = document.getElementById('date');
       try {
-        // เพิ่ม timestamp กัน cache เบราว์เซอร์
         const response = await fetch(`${API_URL}?action=getSessions&t=${new Date().getTime()}`);
         const sessions = await response.json();
 
         dateSelect.innerHTML = '<option value="">เลือกวันที่และรอบเวลา</option>';
         
         sessions.forEach(session => {
-          // ซ่อนรอบที่สถานะไม่ได้เป็น "Active" (เช่น ถูกปิดซ่อนโดย Staff)
           if (session.status !== 'Active') return;
 
           const option = document.createElement('option');
@@ -244,12 +241,27 @@
 
     function showConfirm() {
       const form = document.getElementById('regForm');
-      if(!form.checkValidity()) { form.reportValidity(); return; }
+      const emailInput = document.getElementById('inp_email');
+      
+      // ดักจับและล้างช่องว่าง (space) ที่ผู้ใช้อาจจะเผลอกดเว้นวรรค
+      emailInput.value = emailInput.value.trim();
+
+      // ตรวจสอบว่าลงท้ายด้วย @gmail.com หรือไม่ (ไม่สนตัวพิมพ์เล็ก/ใหญ่)
+      if (emailInput.value && !emailInput.value.toLowerCase().endsWith('@gmail.com')) {
+        emailInput.setCustomValidity('กรุณาใช้อีเมล @gmail.com เท่านั้นครับ');
+      } else {
+        emailInput.setCustomValidity(''); // ผ่าน
+      }
+
+      if(!form.checkValidity()) { 
+        form.reportValidity(); 
+        return; 
+      }
 
       const prefix = document.getElementById('inp_prefix').value;
       const name = document.getElementById('inp_name').value;
       const phone = document.getElementById('inp_phone').value;
-      const email = document.getElementById('inp_email').value;
+      const email = emailInput.value;
       const date = document.getElementById('date').value;
 
       document.getElementById('confirmData').innerHTML = `
